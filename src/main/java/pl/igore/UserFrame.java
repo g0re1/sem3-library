@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -113,6 +114,11 @@ class BPanel extends JPanel{
 		
 		ActionListener recountDebt = new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(date);
+					cal.add(Calendar.DAY_OF_YEAR, 1);
+					date=cal.getTime();
+					System.out.println(date);
 					ActualLendDAO lendD = new ActualLendDAO();
 					List<ActualLend> list = null;
 					try {
@@ -125,8 +131,10 @@ class BPanel extends JPanel{
 						ActualLend lend = ((ActualLend)it.next());
 						int leftDays = lend.getLend().getLeftLendDays();
 						lend.getLend().setLeftLendDays(lend.getLend().getLeftLendDays()-1);
-						if(leftDays<1)
-						lend.getLend().getUser().getAccount().setDebt(lend.getLend().getUser().getAccount().getDebt()+Account.rate);
+						if(leftDays<1){
+							lend.getLend().setPenality(-leftDays*Account.rate);
+							lend.getLend().getUser().getAccount().setDebt(lend.getLend().getUser().getAccount().getDebt()+Account.rate);
+						}
 					}
 				}
 		};
@@ -419,6 +427,7 @@ class BPanel extends JPanel{
 	}
 	
 	private class PayYourDebtsWork implements ActionListener{
+		private DebtsFrame debtsFrame ;
 		private class DebtsFrame extends JFrame{
 			public DebtsFrame(){
 				setTitle("Debts Frame");
@@ -444,17 +453,35 @@ class BPanel extends JPanel{
 					rowData.add(row);
 				}
 				
-			    String[] columnNames = {"Id","Book","Lend Date","Return Date","Left Lend Days","Debt"}; 
+			    String[] columnNames = {"Id","Book","Lend Date","Return Date","Left Lend Days","Penality"}; 
 			    Vector columnNamesV = new Vector(Arrays.asList(columnNames));
 
 			    JTable table = new JTable(rowData, columnNamesV);
 			    JScrollPane scrollPane = new JScrollPane(table);
-			    scrollPane.setPreferredSize(new Dimension(890,600));
+			    scrollPane.setPreferredSize(new Dimension(890,400));
 			    panel.add(scrollPane);
+			    
+			    JTextField payT = new JTextField();
+			    JButton pay = new JButton("Pay");
+			    
+			    payT.setText("OVERAL DEBT = "+user.getAccount().getStringDebt());
+			    payT.setEditable(false);
+			    PayWork payWork = new PayWork();
+			    pay.addActionListener(payWork);
+			    panel.add(payT);
+			    panel.add(pay);
 			}
 		}
+		private class PayWork implements ActionListener{
+			public void actionPerformed(ActionEvent arg0) {
+				user.getAccount().setDebt(0.0);
+				JOptionPane.showMessageDialog(null, "Congratulations !! You payed your debts. ");	
+				debtsFrame.setVisible(false);
+			}	
+		}
+		
 		public void actionPerformed(ActionEvent e) {
-			DebtsFrame debtsFrame = new DebtsFrame();
+			debtsFrame = new DebtsFrame();
 			debtsFrame.setVisible(true);
 		}
 	}

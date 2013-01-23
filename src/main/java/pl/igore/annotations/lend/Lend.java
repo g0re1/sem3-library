@@ -2,6 +2,7 @@ package pl.igore.annotations.lend;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -137,6 +138,14 @@ public class Lend implements Serializable,Cloneable{
 		if(this.returnDate!=null) list.add((this.libDateFormat(returnDate)));
 		else{list.add("Still in your hands");}
 		list.add(String.valueOf( this.getLeftLendDays() ));
+		list.add(getStringPenality(penality));
 		return list;
+	}
+	
+	@Transient
+	public String getStringPenality(Double penality){
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		String s = formatter.format(penality);
+		return s;
 	}
 }
