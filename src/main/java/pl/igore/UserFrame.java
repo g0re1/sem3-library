@@ -204,13 +204,11 @@ class BPanel extends JPanel{
 		ReturnBookWork returnWork = new ReturnBookWork();
 		LendHistoryWork lendHistoryWork = new LendHistoryWork();
 		PayYourDebtsWork payYourDebtsWork = new PayYourDebtsWork();
-		TimeAdderWork timeAdderWork = new TimeAdderWork();
 		
 		lendBook.addActionListener(lendWork);
 		returnBook.addActionListener(returnWork);
 		lendHistory.addActionListener(lendHistoryWork);
 		payYourDebts.addActionListener(payYourDebtsWork);
-		timeAdder.addActionListener(timeAdderWork);
 		timeAdder.addActionListener(recountDebt);
 		
 	}
@@ -219,17 +217,6 @@ class BPanel extends JPanel{
 	}
 	public Date getDate() {
 		return date;
-	}
-	
-	private class TimeAdderWork implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			Integer days = (Integer)combo.getSelectedItem();
-			Calendar calendar = new GregorianCalendar();
-			calendar.setTime(date);
-			calendar.add(Calendar.DAY_OF_YEAR,days);
-			date=calendar.getTime();
-			System.out.println(date);
-		}
 	}
 	private class LendBookWork implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
