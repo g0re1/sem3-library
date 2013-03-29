@@ -27,7 +27,7 @@ Dodatkowe klasy POJO Z JPA jakie powstały to m.in : Lend, LendHistory,User,Acco
 
 Przy okazji wykorzystałem możliwość odwzorowania dziedziczenia za pomocą Hibernate i JPA .. stworzyłem klasę abstrakcyjną Person którą rozszerza klasa Librarian[ bibliotekarz dodaje książki i hisotria wpisów zostaje zapisana w DB żeby było wiadomo kogo obwinić ] i klasa User.
 
-Na koniec żeby przetestować czy hula odpaliłem timer ze słuchaczem zdarzenia który co 5 sek dodaje jeden dzień do daty i zlicza upływający czas .. każde wypożyczenie jest darmowe przez 30 dni .. po upływie tego czasu naliczania jest skromna opłata w wysokości 10 groszy.
+Na koniec żeby przetestować czy działa odpaliłem timer ze słuchaczem zdarzenia który co 5 sek dodaje jeden dzień do daty i zlicza upływający czas .. każde wypożyczenie jest darmowe przez 30 dni .. po upływie tego czasu naliczania jest skromna opłata w wysokości 10 groszy ( taki mechanizm opłat funkcjonował w mojej bibliotece osiedlowej dopóki jej nie zamknęli ).
 
 Wgrałem kilka Lendów [wypożyczeń]  z pliku (klasa App) .. stworzyłem nowe  konto .. wypożyczyłem kilka książek [ zrobiłem też guzik który dodaje od razy 1 dzien do daty ] date zwiększyłem o 60 dni .. po wielu błędach naliczyłem poprawnie zadłużenie [Debt] każdego z Userów .. każdy User ma wgląd do tylko swojej Historii wypożyczeń .. potem zapłaciłem karę za przytrzymanie książki i podziękowałem ;]
 
