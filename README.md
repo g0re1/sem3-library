@@ -3,6 +3,14 @@ sem3-library
 
 Maven+Swing+Hibernate+JPA+MySQL
 
+PS. A jednak jedną adnotację ManyToMany mam ;] Wyszedłem z założenia, że może być kilku autorów jednej książki jak np. ta z której uczyłem się Hibernate.
+
+Aby ją zrealizować użyłem adnotacji JoinTable gdzie zadeklarowałem nazwę tabeli łączącej oraz łączone kolumny. W bazie danych pojawiła
+
+się nowa tabela z dwoma kolumnami - id encji obu stron asocjacji. 
+
+
+
 Projekt ma segment administracyjny[admin] i użytkowy[user]. Zacząłem od strony administracyjnej która jest zwykłym crudem .. zapisuje, czyta, edytuje i usuwa książki .. najpierw zrobiłem POJO z JPA[ Class : Book, Category, Author i asocjacje ] .. potem dostęp do nich w pakiecie DAO 
 
 Następnie żeby mieć już jakieś przykładowe dane zapisałem je do pliku user.txt i  za pomocą klasy App.java wczytałem je do bazy danych [ configuracje MySQL z hibernate pomijam .. do znalezienia w necie ]
