@@ -5,9 +5,7 @@ Maven+Swing+Hibernate+JPA+MySQL
 
 PS. A jednak jedną adnotację ManyToMany mam ;] Wyszedłem z założenia, że może być kilku autorów jednej książki jak np. ta z której uczyłem się Hibernate.
 
-Aby ją zrealizować użyłem adnotacji JoinTable gdzie zadeklarowałem nazwę tabeli łączącej oraz łączone kolumny. W bazie danych pojawiła
-
-się nowa tabela z dwoma kolumnami - id encji obu stron asocjacji. 
+Aby ją zrealizować użyłem adnotacji JoinTable gdzie zadeklarowałem nazwę tabeli łączącej oraz łączone kolumny. W bazie danych pojawiłasię nowa tabela z dwoma kolumnami - id encji obu stron asocjacji. 
 
 
 
