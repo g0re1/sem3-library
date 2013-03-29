@@ -25,7 +25,7 @@ Gdy już się zalogowałem stworzyłem guziki w Swingu aby móc pożyczać , odd
 
 Dodatkowe klasy POJO Z JPA jakie powstały to m.in : Lend, LendHistory,User,Account,Address .. oraz dostęp z DAO.. ta część sprawiła mi najwięcej problemów.
 
-Przy okazji wykorzystałem możliwość odwzorowania dziedziczenia za pomocą Hibernate i JPA .. stworzyłem klasę abstrakcyjną Person którą rozszerza klasa Librarian[ bibliotekarz dodaje książki i hisotria wpisów zostaje zapisana w DB żeby było wiadomo kogo opieprzyć ] i klasa User.
+Przy okazji wykorzystałem możliwość odwzorowania dziedziczenia za pomocą Hibernate i JPA .. stworzyłem klasę abstrakcyjną Person którą rozszerza klasa Librarian[ bibliotekarz dodaje książki i hisotria wpisów zostaje zapisana w DB żeby było wiadomo kogo obwinić ] i klasa User.
 
 Na koniec żeby przetestować czy hula odpaliłem timer ze słuchaczem zdarzenia który co 5 sek dodaje jeden dzień do daty i zlicza upływający czas .. każde wypożyczenie jest darmowe przez 30 dni .. po upływie tego czasu naliczania jest skromna opłata w wysokości 10 groszy.
 
